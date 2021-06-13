@@ -1,7 +1,10 @@
-#  Jogo jokenpo - v1.0.0.3
+#  Jogo jokenpo - v1.0.0.4
 """
+v1.0.0.4 - Atualização:
+- Utilização da condição break para encerrar o jogo.
+- condição de print('-=' * design) no incio do jogo.
 v1.0.0.3 - Atualizações:
-- texto sobre quatidade de partidas.
+- texto sobre quantidade de partidas.
 - inclusão da animação sleep para inicio da jogada.
 """
 
@@ -15,11 +18,12 @@ jogadas = 0
 vit_jogador = 0
 empate = 0
 vit_cpu = 0
-encerrar = ' '
+encerrar = ''
 design = 15
 
 #  inicio do código principal
-while encerrar != 'N':
+while True:
+    print('-=' * design)
     itens = ('Pedra', 'Papel', 'Tesoura')
     cpu = randint(0, 2)
     print('''\nJOGADOR ESCOLHA SUA JOGADA...
@@ -33,6 +37,7 @@ Jogador: {vit_jogador}
 Empates: {empate}
 Computador: {vit_cpu}
     ''')
+    print('-=' * design)
     jogador = int(input('Escolha sua jogada: '))
     sleep(0.3)
     print('JOGADA INICIADA', end='')
@@ -94,6 +99,8 @@ Computador: {vit_cpu}
             print('Jogada inválida.')
             print('-=' * design)
     encerrar = str(input('\nDesejar continuar jogando [S/N]? ')).upper().strip()[0]
+    if encerrar == 'N':
+        break
 print('')
 print('-=' * design)
 print('FIM DO JOGO!')
@@ -102,5 +109,5 @@ print(f'''JOGADAS {jogadas}
 Jogador: {vit_jogador}
 Empates: {empate}
 Computador: {vit_cpu}
-''')
+''', end='')
 print('-=' * design)
