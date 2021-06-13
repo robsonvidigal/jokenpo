@@ -1,11 +1,16 @@
-#  Jogo jokenpo - v1.0.0.2
+#  Jogo jokenpo - v1.0.0.3
+"""
+v1.0.0.3 - Atualizações:
+- texto sobre quatidade de partidas.
+- inclusão da animação sleep para inicio da jogada.
+"""
 
 from random import randint
 from time import sleep
 import emoji
 import pygame
 
-#  comandos do jogo
+#  lógica do jogo para somatória
 jogadas = 0
 vit_jogador = 0
 empate = 0
@@ -13,6 +18,7 @@ vit_cpu = 0
 encerrar = ' '
 design = 15
 
+#  inicio do código principal
 while encerrar != 'N':
     itens = ('Pedra', 'Papel', 'Tesoura')
     cpu = randint(0, 2)
@@ -21,13 +27,19 @@ while encerrar != 'N':
 [ 1 ] - PAPEL
 [ 2 ] - TESOURA
 ''')
-    print(f'''Jogada de número: {jogadas}
+    print(f'''{jogadas}ª Partida(s)...
 << Placar >>
 Jogador: {vit_jogador}
 Empates: {empate}
 Computador: {vit_cpu}
     ''')
     jogador = int(input('Escolha sua jogada: '))
+    sleep(0.3)
+    print('JOGADA INICIADA', end='')
+    for cont_ponto in range (3):
+        sleep(0.8)
+        print('.', end='')
+    print('')
     if jogador < 3:
         jogadas += 1
         print('-=' * design)
